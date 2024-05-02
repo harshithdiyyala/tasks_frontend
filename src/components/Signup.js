@@ -6,6 +6,7 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword,setShowPasword] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -32,7 +33,9 @@ const Signup = () => {
         <h1>Signup</h1>
         <form onSubmit={handleSignup}>
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+          <input type={showPassword ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+          <div className='flex-start'><input type ="checkbox" id='showpwd' onChange={() => setShowPasword(!showPassword)}/> <label htmlFor='showpwd'> Show Password</label></div>
+
           <button type="submit">Signup</button>
           {error && <p>{error}</p>}
         </form>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TaskForm = ({ task, onSave }) => {
+const TaskForm = ({ task, onSave,editMode }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('pending');
@@ -66,7 +66,7 @@ const TaskForm = ({ task, onSave }) => {
           </select>
         </div>
         <br/>
-        <button type="submit" className="form-button">{task ? 'Update Task' : 'Create Task'}</button>
+        <button type="submit" className="form-button">{editMode ? 'Update Task' : 'Create Task'}</button>
       </form>
     </div>
   );

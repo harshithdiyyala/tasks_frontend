@@ -5,6 +5,7 @@ import { loginUser } from '../services/services';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword,setShowPasword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -33,7 +34,8 @@ const Login = () => {
         <h1>TASKIFY</h1>
         <form onSubmit={handleLogin}>
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+          <input type={showPassword ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+          <div className='flex-start'><input type ="checkbox" id='showpwd' onChange={() => setShowPasword(!showPassword)}/> <label htmlFor='showpwd'> Show Password</label></div>
           <button type="submit">Login</button>
           {error && <p>{error}</p>}
         </form>
